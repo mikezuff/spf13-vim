@@ -1,0 +1,6 @@
+UnBundle 'bling/vim-bufferline'
+UnBundle 'tpope/vim-abolish.git'
+UnBundle 'kana/vim-textobj-user'
+UnBundle 'kana/vim-textobj-indent'
+UnBundle 'gcmt/wildfire.vim'
+

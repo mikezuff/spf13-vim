@@ -1,4 +1,4 @@
-# spf13-vim : Steve Francia's Vim Distribution
+# spf13-vim : MikeZuff's fork of Steve Francia's Vim Distribution
 
                     __ _ _____              _
          ___ _ __  / _/ |___ /      __   __(_)_ __ ___
@@ -8,6 +8,8 @@
             |_|
 
 spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and [MacVim].
+
+*This fork is customized to have a reduced plugin set with customization for development in C, Go, and Erlang.*
 
 It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
 
