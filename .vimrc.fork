@@ -1,1 +1,17 @@
 set nospell
+nmap <leader>v :e ~/.vimrc<cr>
+nmap <leader>vs :source ~/.vimrc<cr>
+
+" For moving between windows
+map <C-H> <C-W>h
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+
+" Disable increment
+nmap <C-A> <Nop>
+
+" For when you forget to sudo.. Really Write the file.
+cmap w!! w !sudo tee % >/dev/null
+
+let g:ctrlp_show_hidden = 1

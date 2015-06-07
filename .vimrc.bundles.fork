@@ -4,3 +4,18 @@ UnBundle 'kana/vim-textobj-user'
 UnBundle 'kana/vim-textobj-indent'
 UnBundle 'gcmt/wildfire.vim'
 
+if count(g:spf13_bundle_groups, 'general')
+    Bundle 'adie/BlockDiff'
+    vmap ,d1 :call BlockDiff_GetBlock1()<CR>
+    vmap ,d2 :call BlockDiff_GetBlock2()<CR>
+endif
+
+if count(g:spf13_bundle_groups, 'go')
+    " http://godoc.org/code.google.com/p/go.tools/cmd/goimports
+    let g:go_fmt_fail_silently = 1
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_structs = 1
+    autocmd FileType go autocmd BufWritePre <buffer> GoImports
+endif
+
