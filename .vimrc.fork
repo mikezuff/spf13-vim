@@ -1,6 +1,32 @@
 set nospell
+set wrap
+set number
+set nobackup nowritebackup
+set backspace=indent,eol,start
+set hlsearch
+set incsearch
+set ignorecase smartcase "/\C for case sensitive search
+set ts=4
+set sw=4
+set shiftround
+set expandtab
+set cindent
+set diffopt=filler,iwhite
+set vb  " enable visual bell
+set clipboard=autoselect,exclude:cons\\\|linux\\\|screen
+set wildignore=*.o,*.obj,*.bak,*.exe
+
+au BufRead,BufNewFile *.md set filetype=markdown
+
+" Disable ex mode
+nnoremap Q <nop>
+
 nmap <leader>v :e ~/.vimrc<cr>
 nmap <leader>vs :source ~/.vimrc<cr>
+nmap <leader>co :set syntax=
+nmap <leader>t2 :set ts=2 sw=2<CR>
+nmap <leader>t4 :set ts=4 sw=4<CR>
+nmap <leader>t8 :set ts=8 sw=8<CR>
 
 " For moving between windows
 map <C-H> <C-W>h
@@ -15,4 +41,81 @@ nmap <C-A> <Nop>
 cmap w!! w !sudo tee % >/dev/null
 
 let g:ctrlp_show_hidden = 1
-set wrap
+let c_comment_strings=1 " highlight strings inside C comments
+
+if exists("*DiffOff")
+  delfunction DiffOff
+endif
+function DiffOff()
+  :set nodiff foldcolumn=0 foldmethod=manual noscrollbind wrap nocursorbind
+  :syntax on
+  :%foldopen!
+endfunction
+nmap <leader>nd :call DiffOff()<CR>
+
+"cScope stuff
+if exists("*FixCScope")
+    delfunction FixCScope
+endif
+function FixCScope()
+    :cs add $CSCOPE_DB
+    :cs reset
+endfunction
+nmap <leader>csr :call FixCScope()<CR>
+if $CSCOPE_DB != ""
+    call FixCScope()
+endif
+
+if has("cscope")
+	set cscopetag
+	set csto=0
+	set cscopeverbose
+
+	" Cscope mapping
+	nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>f :cs find f <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>i :cs find i ^ <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+	nmap <C-@><C-\>s :cs find s
+	nmap <C-@><C-\>g :cs find g
+	nmap <C-@><C-\>c :cs find c
+	nmap <C-@><C-\>t :cs find t
+	nmap <C-@><C-\>e :cs find e
+	nmap <C-@><C-\>f :cs find f
+	nmap <C-@><C-\>i :cs find i ^
+	nmap <C-@><C-\>d :cs find d
+
+	nmap <C-@>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-@>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-@>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-@>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-@>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-@>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+	nmap <C-@>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+	nmap <C-@>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+
+	nmap <C-@><C-@>s :scs find s
+	nmap <C-@><C-@>g :scs find g
+	nmap <C-@><C-@>c :scs find c
+	nmap <C-@><C-@>t :scs find t
+	nmap <C-@><C-@>e :scs find e
+	nmap <C-@><C-@>f :scs find f
+	nmap <C-@><C-@>i :scs find i ^
+	nmap <C-@><C-@>d :scs find d
+endif
+
+
+if exists("*EP_setup")
+  delfunction EP_setup
+endif
+function EP_setup()
+    setlocal shiftwidth=4 tabstop=8 noexpandtab softtabstop=4 tw=90
+endfunction
+
+au BufRead,BufNewFile,BufEnter */edgeprism/* call EP_setup()
+nmap ,tep :call EP_setup()
