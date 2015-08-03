@@ -16,10 +16,14 @@ set vb  " enable visual bell
 set clipboard=autoselect,exclude:cons\\\|linux\\\|screen
 set wildignore=*.o,*.obj,*.bak,*.exe
 
+let NERDTreeQuitOnOpen = 0
+
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " Disable ex mode
 nnoremap Q <nop>
+
+nmap <leader>sdt :r! stddate<cr>
 
 nmap <leader>v :e ~/.vimrc<cr>
 nmap <leader>vs :source ~/.vimrc<cr>
