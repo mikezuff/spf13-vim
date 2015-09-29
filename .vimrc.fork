@@ -18,12 +18,13 @@ set wildignore=*.o,*.obj,*.bak,*.exe
 
 let NERDTreeQuitOnOpen = 0
 
-au BufRead,BufNewFile *.md set filetype=markdown
+"au BufRead,BufNewFile *.md set filetype=markdown
 
 " Disable ex mode
 nnoremap Q <nop>
 
-nmap <leader>sdt :r! stddate<cr>
+nmap <leader>sdd :r! stddate<cr>
+nmap <leader>stt :r! stdtime<cr>
 
 nmap <leader>v :e ~/.vimrc<cr>
 nmap <leader>vs :source ~/.vimrc<cr>
