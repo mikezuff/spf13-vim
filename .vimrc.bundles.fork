@@ -5,6 +5,7 @@ UnBundle 'kana/vim-textobj-indent'
 UnBundle 'gcmt/wildfire.vim'
 UnBundle 'AutoClose'
 UnBundle 'tpope/vim-surround'
+UnBundle 'jiangmiao/auto-pairs'
 
 if count(g:spf13_bundle_groups, 'general')
     Bundle 'adie/BlockDiff'
