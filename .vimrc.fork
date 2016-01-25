@@ -17,6 +17,8 @@ set clipboard=autoselect,exclude:cons\\\|linux\\\|screen
 set wildignore=*.o,*.obj,*.bak,*.exe
 
 let NERDTreeQuitOnOpen = 0
+" vim-json isn't installed, but I don't want it anyway
+let g:vim_json_syntax_conceal = 0
 
 "au BufRead,BufNewFile *.md set filetype=markdown
 

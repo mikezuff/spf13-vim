@@ -1,11 +1,19 @@
-UnBundle 'bling/vim-bufferline'
-UnBundle 'tpope/vim-abolish.git'
-UnBundle 'kana/vim-textobj-user'
-UnBundle 'kana/vim-textobj-indent'
-UnBundle 'gcmt/wildfire.vim'
+Bundle 'saltstack/salt-vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'spf13/vim-colors'
+Bundle 'ctrlpvim/ctrlp.vim'
+Bundle 'tacahiroy/ctrlp-funky'
+if (has("python") || has("python3")) && exists('g:spf13_use_powerline') && !exists('g:spf13_use_old_powerline')
+    Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
+elseif exists('g:spf13_use_powerline') && exists('g:spf13_use_old_powerline')
+    Bundle 'Lokaltog/vim-powerline'
+else
+    Bundle 'bling/vim-airline'
+endif
+Bundle 'powerline/fonts'
 UnBundle 'AutoClose'
-UnBundle 'tpope/vim-surround'
-UnBundle 'jiangmiao/auto-pairs'
+UnBundle 'mattn/webapi-vim'
 
 if count(g:spf13_bundle_groups, 'general')
     Bundle 'adie/BlockDiff'

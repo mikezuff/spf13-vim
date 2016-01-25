@@ -1,3 +1,7 @@
-let g:spf13_bundle_groups=['general', 'programming', 'go', 'youcompleteme']
+let g:spf13_bundle_groups=['programming', 'go', 'youcompleteme']
 let g:spf13_map_cr_omni_complete = 1
 let g:spf13_map_esc_omni_complete = 1
+let g:ctrlp_switch_buffer = 'eT'
+"set conceallevel=0
+" this isn't hiding quotes, but prev line does
+let g:vim_json_syntax_conceal = 0
